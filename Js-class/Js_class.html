@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Sound Simulator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f1f1f1;
+
+    }
+    input {
+     width: 100%;
+      margin: 10px;
+      padding: 4px;
+      font-size: 14px;
+    
+    }
+    button {
+      margin: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 14px;
+      background-color: rgb(83, 197, 83);
+
+    }
+
+    #soundOutput {margin: 10px;
+      padding: 10px;
+      font-size: 13px;
+     background-color: white;
+      border: 1px solid white;
+      width: 100%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+    <h1>Animal Sound Simulator</h1>
+    <label for="animalInput"></label>
+    <input type="text" id="animalInput" placeholder="Enter the animal name">
+    <button onclick="playAnimalSound()">Make Sound</button>
+    <div id="soundOutput"></div>
+
+    <script>
+      class AnimalSoundSimulator {
+        constructor(animal) {
+          this.animal = animal;
+        }
+        makeSound() {
+          switch (this.animal.toLowerCase()) {
+            case 'dog':
+              return 'bark';
+            case 'cat':
+              return 'miaow';
+            case 'cow':
+              return 'moos';
+            default:
+              return 'unknown sound';
+          }
+        }
+      }
+      function playAnimalSound() {
+        const animalName = document.getElementById('animalInput').value;
+    
+        const animalSimulator = new AnimalSoundSimulator(animalName);
+
+        const sound = animalSimulator.makeSound();
+
+        document.getElementById('soundOutput').innerText = ` ${animalName} ${sound}.`;
+      }
+    </script>
+    </body>
+    </html>
